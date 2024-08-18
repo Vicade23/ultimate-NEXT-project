@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 
 const SignUpPage = () => {
@@ -23,6 +24,13 @@ const SignUpPage = () => {
             const response = await axios.post('/api/users/signup', user);
             console.log('signup successful', response.data)
             router.push('/login');
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registered successful",
+            showConfirmButton: false,
+            timer: 1500
+            });
         } catch (error: any) {
             console.log('Signup failed', error.message)
             toast.error(error.message)
@@ -46,16 +54,16 @@ const SignUpPage = () => {
             <form onSubmit={(e) => {e.preventDefault()}}>
                 <h1 className='text-center mb-3'>{!loading ? 'Sign up' : 'Processing...'}</h1>
                 <div className="form-input mb-3">
-                    <input type="email" className='form-control' placeholder='Email' value={user.email} onChange={(e) => {setUser({...user, email: e.target.value})}} />
+                    <input type="email" className='form-control py-3' placeholder='Email' value={user.email} onChange={(e) => {setUser({...user, email: e.target.value})}} />
                 </div>
                 <div className="form-input mb-3">
-                    <input type="text" className='form-control' placeholder='Username' value={user.username} onChange={(e) => {setUser({...user, username: e.target.value})}} />
+                    <input type="text" className='form-control py-3' placeholder='Username' value={user.username} onChange={(e) => {setUser({...user, username: e.target.value})}} />
                 </div>
                 <div className="form-input mb-3">
-                    <input type="password" className='form-control' placeholder='Password' value={user.password} onChange={(e) => {setUser({...user, password: e.target.value})}} />
+                    <input type="password" className='form-control py-3' placeholder='Password' value={user.password} onChange={(e) => {setUser({...user, password: e.target.value})}} />
                 </div>
                 <div className="form-input">
-                    <button className='form-control mb-3 btn btn-primary' onClick={onSignUp}>{buttonDisabled ? 'No signup' : 'Signup'}</button>
+                    <button className='form-control py-3 mb-3 btn btn-primary' onClick={onSignUp}>{buttonDisabled ? 'No signup' : 'Signup'}</button>
                 </div>
                 <h6 className='text-center'>Already have an account? <Link href='/login'>Login</Link></h6>
             </form>

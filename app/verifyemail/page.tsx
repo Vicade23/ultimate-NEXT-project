@@ -11,7 +11,7 @@ import axios
     const [error, setError] = useState(false);
 
     const verifyUserEmail = async () => {
-       try {
+       try { 
         await axios.post('/api/users/verifyemail', {token});
         setVerified(true)
 

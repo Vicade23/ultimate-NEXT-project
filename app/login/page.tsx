@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 
 const LoginPage = () => {
@@ -23,6 +24,14 @@ const LoginPage = () => {
             console.log('Login successful', response.data)
             toast.success('Login success')
             router.push('/profile');
+            
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Wellcome",
+            showConfirmButton: false,
+            timer: 1500
+  })
         } catch (error: any) {
             console.log('Login failed', error.message)
             toast.error(error.message)
@@ -45,13 +54,13 @@ const LoginPage = () => {
             <form onSubmit={(e) => {e.preventDefault()}}>
                 <h1 className='text-center mb-3'>{!loading ? 'Login' : 'Processing...'}</h1>
                 <div className="form-input mb-3">
-                    <input type="email" className='form-control' placeholder='Email' value={user.email} onChange={(e) => {setUser({...user, email: e.target.value})}} />
+                    <input type="email" className='form-control py-3' placeholder='Email' value={user.email} onChange={(e) => {setUser({...user, email: e.target.value})}} />
                 </div>
                 <div className="form-input mb-3">
-                    <input type="password" className='form-control' placeholder='Password' value={user.password} onChange={(e) => {setUser({...user, password: e.target.value})}} />
+                    <input type="password" className='form-control py-3' placeholder='Password' value={user.password} onChange={(e) => {setUser({...user, password: e.target.value})}} />
                 </div>
                 <div className="form-input">
-                    <button className='form-control mb-3 btn btn-primary' onClick={onLogIn}>{buttonDisabled ? 'No Login' : 'Login'}</button>
+                    <button className='form-control py-3 mb-3 btn btn-primary' onClick={onLogIn}>{buttonDisabled ? 'No Login' : 'Login'}</button>
                 </div>
                 <h6 className='text-center'>Don't have an account? <Link href='/signup'>Sign Up</Link></h6>
             </form>

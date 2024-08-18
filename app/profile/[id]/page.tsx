@@ -2,7 +2,11 @@ import React from 'react'
 
 const UserProfile = ({params}: any) => {
   return (
-    <div>Profile {params.id}</div>
+    <div>
+      <div className="h1 text-center py-3">Profile </div>
+      <hr />
+      <div className="mt-3">The user id is {params.id}</div>
+    </div>
   )
 }
 
