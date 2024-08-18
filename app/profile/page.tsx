@@ -1,17 +1,16 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import {toast} from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2';
 import './profile.scss'
 
 
 
 const UserProfilepg = () => {
   const router = useRouter();
-  const [data, useData] = useState('nothing')
+  const [data, stringData] = useState<any>('nothing')
 
 
   const logout = async () => {
@@ -29,7 +28,7 @@ const UserProfilepg = () => {
   const getUserDetails = async () => {
     const res = await axios.get('/api/users/me')
     console.log(res.data)
-    useData(res.data.data._id)
+    stringData(res.data.data._id)
   }
 
   return (

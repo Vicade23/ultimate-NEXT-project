@@ -2,7 +2,6 @@ import {connect} from '@/dbConfig/dbConfig';
 import { verify } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import User from '@/models/userModels';
-import { error } from 'console';
 
 connect();
 

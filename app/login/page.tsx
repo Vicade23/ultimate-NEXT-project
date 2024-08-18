@@ -62,7 +62,7 @@ const LoginPage = () => {
                 <div className="form-input">
                     <button className='form-control py-3 mb-3 btn btn-primary' onClick={onLogIn}>{buttonDisabled ? 'No Login' : 'Login'}</button>
                 </div>
-                <h6 className='text-center'>Don't have an account? <Link href='/signup'>Sign Up</Link></h6>
+                <h6 className='text-center'>Dont have an account? <Link href='/signup'>Sign Up</Link></h6>
             </form>
         </div>
     </div>
