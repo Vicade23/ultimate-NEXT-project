@@ -5,7 +5,7 @@ const UserProfile = ({params}: any) => {
     <div>
       <div className="h1 text-center py-3">Profile </div>
       <hr />
-      <div className="mt-3">The user id is {params.id}</div>
+      <div className="mt-3 text-center">The user id is {params.id}</div>
     </div>
   )
 }
